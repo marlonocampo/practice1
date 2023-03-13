@@ -1,12 +1,26 @@
 import "../assets/index.css"
 import { useEffect, useState } from "react"
+import { api } from "../models/RickMorty"
+import { getDatos } from "../services/api"
+import { setInitialRM } from "../models/Setters"
+
 export function App() {
-    const [count, setCount] = useState(0)
+    const [datos, setDatos] = useState<api>(setInitialRM);
+    const [error, setError] = useState({});
+
+    useEffect(() => {
+        getDatos()
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
     return (
         <>
             <div className="m-5 p-1">
                 <div className="prose m-5">
-                    <h1>Rick and Morty</h1>
+                    <h1>{"Rick and Morty"}</h1>
                     <p>Lazy loading Test, TyspeScript and apiFetching </p>
                 </div>
                 <div className="flex">
