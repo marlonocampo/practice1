@@ -1,10 +1,12 @@
-interface RickMorty{
+export interface RickMorty{
     id: number,
     name: string,
-    description: string,
-    imageUrl: string
+    type: string,
+    image: string,
+    species: string,
+    location: Location
 }
 
-export interface api{
-    results : RickMorty[]
+interface Location {
+    name: string
 }
